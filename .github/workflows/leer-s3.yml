@@ -10,7 +10,7 @@ jobs:
   leer-log-demo:
     # El label enruta el job al proyecto CodeBuild registrado en el stack CDK.
     # El IAM Role de este runner tiene permisos de lectura sobre el bucket awscommunityday2026-jothan.
-    runs-on: codebuild-gha-runner-co-2026-2-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: codebuild-gha-runner-co-2026-1-${{ github.run_id }}-${{ github.run_attempt }}
 
     steps:
       - name: Leer log-demo.txt desde S3 e imprimir contenido
