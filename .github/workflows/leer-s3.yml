@@ -1,0 +1,22 @@
+name: Leer archivo desde S3
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  leer-log-demo:
+    # El label enruta el job al proyecto CodeBuild registrado en el stack CDK.
+    # El IAM Role de este runner tiene permisos de lectura sobre el bucket awscommunityday2026-jothan.
+    runs-on: codebuild-gha-runner-co-2026-2-${{ github.run_id }}-${{ github.run_attempt }}
+
+    steps:
+      - name: Leer log-demo.txt desde S3 e imprimir contenido
+        run: |
+          echo "Descargando log-demo.txt desde S3..."
+          aws s3 cp s3://awscommunityday2026-jothan/log-demo.txt log-demo.txt
+          echo "------- Contenido de log-demo.txt -------"
+          cat log-demo.txt
+          echo "-----------------------------------------"
